@@ -36,21 +36,25 @@
     <div class="right-element col">
       <div class="">
         <div class="row">
-          <div class="col">
+          <div class="col-6" *ngFor="let category of returnObjectKeys(userData['categories'])">
             <div class="category">
-              <h3 class="heading">Allergies <img src="assets/img/icons/Group 24@2x.png"></h3>
-              <ul>
-                <li class="points">first allergy</li>
-                <li class="points">second allergy</li>
+              <h3 class="heading">{{category | titlecase}} <img src="assets/img/icons/Group 24@2x.png"></h3>
+              <ul *ngIf="returnIsArray(userData['categories'][category])">
+                <span *ngFor="let point of userData['categories'][category]; let i = index">
+                  <div *ngIf="returnIsString(point)"><li class="points">{{point}}</li></div>
+                  <div *ngIf="!(returnIsString(point))">
+                    <table class="table table-borderless table-active table-hover">
+                      <tbody>
+                        <tr>
+                          <td *ngFor="let el of userData['categories'][category][i]">{{el}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </span>
               </ul>
-            </div>
-          </div>
-          <div class="col">
-            <div class="category">
-              <h3 class="heading">Problem <img src="assets/img/icons/Group 24@2x.png"></h3>
-              <ul>
-                <li class="points">first problem</li>
-                <li class="points">second problem</li>
+              <ul *ngIf="!(returnIsArray(userData['categories'][category]))">
+                <li class="points" *ngFor="let point of returnObjectKeys(userData['categories'][category])">{{point | titlecase}} : {{userData['categories'][category][point]}}</li>
               </ul>
             </div>
           </div>

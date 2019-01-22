@@ -1,0 +1,30 @@
+{
+  "user1234":{
+    "homepage":{
+      "categories":{
+        "allergies":[
+          "First allergy",
+          "Second allergy",
+          "Third allergy",
+          "Fourth allergy"
+        ],
+        "problems":[
+          "Problem"
+        ],
+        "history":[],
+        "diagnosis":[],
+        "vitals":{
+          "weight":"72Kg",
+          "height":"170cm",
+          "bp":"120/80",
+          "temperature":"98.6F",
+          "bmi":"21"
+        },
+        "medication":[
+          ["Aspirin", "4mg", "AF", "1-0-1", "10 days"],
+          ["Aspirin", "4mg", "AF", "1-0-1", "10 days"]
+        ]
+      }
+    }
+  }
+}
