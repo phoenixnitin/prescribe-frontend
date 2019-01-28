@@ -2,28 +2,46 @@
   "user1234":{
     "homepage":{
       "categories":{
-        "allergies":[
-          "First allergy",
-          "Second allergy",
-          "Third allergy",
-          "Fourth allergy"
-        ],
-        "problems":[
-          "Problem"
-        ],
-        "history":[],
-        "diagnosis":[],
-        "vitals":{
-          "weight":"72Kg",
-          "height":"170cm",
-          "bp":"120/80",
-          "temperature":"98.6F",
-          "bmi":"21"
+        "allergies":{
+          "type": "array",
+          "data": [
+            "First allergy",
+            "Second allergy",
+            "Third allergy",
+            "Fourth allergy"
+          ]
         },
-        "medication":[
-          ["Aspirin", "4mg", "AF", "1-0-1", "10 days"],
-          ["Aspirin", "4mg", "AF", "1-0-1", "10 days"]
-        ]
+        "problems":{
+          "type": "array",
+          "data": [
+            "Problem"
+          ]
+        },
+        "history":{
+          "type": "array",
+          "data": []
+        },
+        "diagnosis":{
+          "type": "array",
+          "data": []
+        },
+        "vitals":{
+          "type": "dict",
+          "data":{
+            "weight":"72Kg",
+            "height":"170cm",
+            "bp":"120/80",
+            "temperature":"98.6F",
+            "bmi":"21"
+          }
+        },
+        "medication":{
+          "type": "arrayOfArray",
+          "data": [
+            ["Aspirin", "4mg", "AF", "1-0-1", "10 days"],
+            ["Aspirin", "4mg", "AF", "1-0-1", "10 days"]
+          ]
+        }
       }
     }
   }

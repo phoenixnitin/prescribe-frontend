@@ -38,27 +38,120 @@
         <div class="row">
           <div class="col-6" *ngFor="let category of returnObjectKeys(userData['categories'])">
             <div class="category">
-              <h3 class="heading">{{category | titlecase}} <img src="assets/img/icons/Group 24@2x.png"></h3>
-              <ul *ngIf="returnIsArray(userData['categories'][category])">
-                <span *ngFor="let point of userData['categories'][category]; let i = index">
-                  <div *ngIf="returnIsString(point)"><li class="points">{{point}}</li></div>
-                  <div *ngIf="!(returnIsString(point))">
-                    <table class="table table-borderless table-active table-hover">
-                      <tbody>
-                        <tr>
-                          <td *ngFor="let el of userData['categories'][category][i]">{{el}}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </span>
+              <h3 class="heading">{{category | titlecase}} <img src="assets/img/icons/Group 24@2x.png" class="cursor-pointer" (click)="openModel(category)"></h3>
+              <ul *ngIf="userData['categories'][category]['type'] === 'array'">
+                <li *ngFor="let point of userData['categories'][category]['data']">{{point}}</li>
               </ul>
-              <ul *ngIf="!(returnIsArray(userData['categories'][category]))">
-                <li class="points" *ngFor="let point of returnObjectKeys(userData['categories'][category])">{{point | titlecase}} : {{userData['categories'][category][point]}}</li>
+              <ul *ngIf="userData['categories'][category]['type'] === 'dict'">
+                <li *ngFor="let key of returnObjectKeys(userData['categories'][category]['data'])">{{key | titlecase}}: {{userData['categories'][category]['data'][key]}}</li>
               </ul>
+              <div *ngIf="userData['categories'][category]['type'] === 'arrayOfArray'">
+                <table class="table table-borderless table-active table-hover">
+                  <tbody>
+                  <tr *ngFor="let line of userData['categories'][category]['data']">
+                    <td *ngFor="let el of line">{{el}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="inputModel1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="inputModel1Title">Medicine Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onFormSubmit('array')">
+          <div class="form-group">
+            <label for="value_model1">Information</label>
+            <input [(ngModel)]="value_model1" name="value_model1" type="text" class="form-control" id="value_model1" placeholder="Information" autocomplete="off">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="inputModel2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="inputModel2Title">Medicine Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onFormSubmit('dict')">
+          <div class="form-group">
+            <label for="key_model2">Medicine Name</label>
+            <input [(ngModel)]="key_model2" name="key_model2" type="text" class="form-control" id="key_model2" placeholder="Medicine Name" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="value_model2">Quantity</label>
+            <input [(ngModel)]="value_model2" name="value_model2" type="text" class="form-control" id="value_model2" placeholder="Quantity" autocomplete="off">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="inputModel3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="inputModel3Title">Medicine Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onFormSubmit('arrayOfArray')">
+          <div class="form-group">
+            <label for="value_model3_medicine">Medicine Name</label>
+            <input [(ngModel)]="value_model3.medicine" name="value_model3_medicine" type="text" class="form-control" id="value_model3_medicine" placeholder="Medicine Name" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="value_model3_quantity">Quantity</label>
+            <input [(ngModel)]="value_model3.quantity" name="value_model3_quantity" type="text" class="form-control" id="value_model3_quantity" placeholder="Quantity" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="value_model3_afterOrBefore">After/Before Food</label>
+            <input [(ngModel)]="value_model3.afterOrBefore" name="value_model3_afterOrBefore" type="text" class="form-control" id="value_model3_afterOrBefore" placeholder="After/Before Food" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="value_model3_times">When to take?</label>
+            <input [(ngModel)]="value_model3.times" name="value_model3_times" type="text" class="form-control" id="value_model3_times" placeholder="Time" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="value_model3_days">No. of days</label>
+            <input [(ngModel)]="value_model3.days" name="value_model3_days" type="text" class="form-control" id="value_model3_days" placeholder="Days" autocomplete="off">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
