@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     } else if (this.userData['categories'][category]['type'] === 'dict' ) {
       $('#inputModel2').modal();
     } else if (this.userData['categories'][category]['type'] === 'arrayOfArray' ) {
-      $('#inputModel3').modal();
+      $('#inputModel4').modal();
     }
   }
 
