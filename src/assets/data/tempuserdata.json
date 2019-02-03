@@ -30,9 +30,9 @@
           "data":{
             "weight":"72Kg",
             "height":"170cm",
-            "bp":"120/80",
+            "blood pressure":"120/80",
             "temperature":"98.6F",
-            "bmi":"21"
+            "body mass index":"21"
           }
         },
         "medication":{

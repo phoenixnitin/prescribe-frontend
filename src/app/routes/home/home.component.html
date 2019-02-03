@@ -162,7 +162,7 @@
     <div class="modal-content">
       <div class="modal-body">
         <div class="row">
-          <div class="col">
+          <div class="col-3">
             <form>
               <div class="form-row">
                 <div class="col-sm-12">
@@ -196,13 +196,13 @@
               </div>
               <div class="form-row">
                 <div class="col-sm-4 text-center">
-                  <input type="number" min="0" max="1" step="1" value="1">
+                  <input type="number" min="0" max="3" step="1" value="0">
                 </div>
                 <div class="col-sm-4 text-center">
-                  <input type="number" min="0" max="1" step="1" value="1">
+                  <input type="number" min="0" max="3" step="1" value="0">
                 </div>
                 <div class="col-sm-4 text-center">
-                  <input type="number" min="0" max="1" step="1" value="1">
+                  <input type="number" min="0" max="3" step="1" value="0">
                 </div>
               </div>
               <div class="form-row custom-footer">
@@ -215,7 +215,7 @@
               </div>
             </form>
           </div>
-          <div class="col table-container">
+          <div class="col-4 table-container">
             <table class="table table-striped table-hover ">
               <tbody>
               <tr *ngFor="let item of [].constructor(10)">
@@ -228,7 +228,7 @@
               </tbody>
             </table>
           </div>
-          <div class="col last-block">
+          <div class="col-5 last-block">
             <div class="form-row">
               <div class="col text-center">
                 <input type="text" placeholder="Duration (Days)">
@@ -236,7 +236,7 @@
             </div>
             <div class="list-group-item-custom" *ngFor="let item of [].constructor(2); let i=index">
               <span>{{i+1}}. </span>
-              <span>Aspirin</span>
+              <span class="drug-name" data-toggle="tooltip" data-placement="top" title="Aspirin Aspirin Aspirin" trigger="hover focus click">AspirinAspirinAspirin</span>
               <span>4mg</span>
               <span>AF</span>
               <span>1-0-1</span>

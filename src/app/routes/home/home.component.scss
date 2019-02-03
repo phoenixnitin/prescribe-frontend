@@ -93,6 +93,7 @@
 .last-block{
   .list-group-item-custom {
     padding: 0.25rem;
+    display: inline-flex;
   }
   input {
     border-radius: 0.25rem;
@@ -101,6 +102,14 @@
   }
   span {
     padding: 5px;
+  }
+  span.drug-name {
+    white-space: nowrap;
+    max-width: 170px;
+    min-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
   }
   span{
     input {

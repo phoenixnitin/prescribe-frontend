@@ -26,6 +26,9 @@ export class HomeComponent implements OnInit {
     }, error => {
       console.log('error happened');
     });
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
   }
 
   ngOnInit() {

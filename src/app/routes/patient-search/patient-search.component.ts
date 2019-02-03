@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-patient-search',
@@ -10,6 +11,10 @@ export class PatientSearchComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  openModal() {
+    $('#searchModal').modal();
   }
 
 }
