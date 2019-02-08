@@ -1,19 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../shared/service/auth.service';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  dropdownShown = false;
-  constructor() { }
+    dropdownShown = false;
 
-  ngOnInit() {
-  }
+    constructor(private authService: AuthService) {
+    }
 
-  toggleDropdown() {
-    this.dropdownShown = !this.dropdownShown;
-  }
+    ngOnInit() {
+    }
 
+    toggleDropdown() {
+        this.dropdownShown = !this.dropdownShown;
+    }
+
+    logout() {
+        this.authService.logout();
+    }
 }

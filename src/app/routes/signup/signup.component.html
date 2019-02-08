@@ -1,5 +1,14 @@
 <div class="container h-100">
   <div class="row h-100 align-items-center text-center">
+      <div *ngIf="authService.uid | async as uid; else login">
+          The user is logged in. {{uid}}
+          <div *ngIf="authService.isAdmin | async">User is ADMIN</div>
+          <button (click)="authService.logout()">Logout</button>
+      </div>
+      <ng-template #login>
+          You need to login:
+          <button (click)="authService.loginWithGoogle()">Login</button>
+      </ng-template>
     <div class="col-12 mycard">
       <h2>SIGN UP</h2>
       <form id="signupForm" class="text-left">
